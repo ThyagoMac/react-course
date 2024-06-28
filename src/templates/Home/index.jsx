@@ -4,13 +4,15 @@ import './styles.css'
 import { loadPosts } from '../../utils/load-posts';
 import { Posts } from '../../components/Posts';
 import { Button } from '../../components/Button';
+import { TextInput } from '../../components/TextInput';
 
 export class Home extends Component {
   state = {
     posts: [],
     allPosts: [],
     currentPage: 0,
-    postsPerPage: 10,
+    postsPerPage: 3,
+    searchValue: "",
   };
 
   async componentDidMount() {
@@ -42,22 +44,47 @@ export class Home extends Component {
 
   }
 
+  handleSearch = (event) => {
+    const { value } =  event.target;
+    this.setState({ searchValue: value });
+  }
+
   render() {
     //const posts = this.state.posts;
-    const { posts, allPosts, currentPage, postsPerPage, } = this.state;
+    const { posts, allPosts, currentPage, postsPerPage, searchValue, } = this.state;
 
     const noMorePosts = currentPage + postsPerPage >= allPosts.length;
 
+    const filteredPosts = !!searchValue ?
+      allPosts.filter(post => {
+        return post.title.toLowerCase().includes(searchValue.toLowerCase())
+      })
+      : posts;
+
     return (
       <section className='container'>
-        <Posts posts={posts} />
+        <h3>Posts {filteredPosts.length} from {allPosts.length}</h3>
+        <div className='search-wrapper'>
+          <TextInput
+            placeholder="Filter posts"
+            searchValue={searchValue}
+            handleSearch={this.handleSearch}
+          />
+        </div>
+        
+        {filteredPosts.length < 1 && (
+          <div>No posts found</div>
+        )}
+        <Posts posts={filteredPosts} />
         <div className='button-wrapper'>
-          <Button
-            disabled={noMorePosts}
-            text="More Posts"
-            onClick={this.loadMorePosts}
-          >
-          </Button>
+          {!searchValue && (
+            <Button
+              disabled={noMorePosts}
+              text="More Posts"
+              onClick={this.loadMorePosts}
+            >
+            </Button>
+          )}
         </div>
       </section>
     )
