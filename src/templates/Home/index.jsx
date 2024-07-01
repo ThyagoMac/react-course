@@ -53,15 +53,15 @@ export const Home = () => {
 
   return (
     <section className='container'>
-      <h3>Posts {filteredPosts.length} from {allPosts.length}</h3>
       <div className='search-wrapper'>
         <TextInput
           placeholder="Filter posts"
           searchValue={searchValue}
           handleSearch={handleSearch}
-        />
+          />
       </div>
       
+      <h3 className="posts-count">Posts {filteredPosts.length} from {allPosts.length}</h3>
       {filteredPosts.length < 1 && (
         <div>No posts found</div>
       )}

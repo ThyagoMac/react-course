@@ -4,5 +4,9 @@
   align-items: flex-end;
 }
 .search-wrapper {
-  margin: 20px 0px 20px 30px;
+  margin: 20px 30px;
+}
+.posts-count {
+  margin-left: 30px;
+  margin-bottom: 0px;
 }
