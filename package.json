@@ -21,9 +21,6 @@
     "extends": [
       "react-app",
       "react-app/jest"
-    ],
-    "testing-library/no-node-access": [
-      "error", {"allowContainerFirstChild": true}
     ]
   },
   "browserslist": {

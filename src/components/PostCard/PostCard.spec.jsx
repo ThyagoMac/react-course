@@ -12,11 +12,11 @@ describe("<PostCard />", () => {
 
     render(<PostCard post={mockPost} />);
 
-    const postCard = screen.getByRole("img", { name: /title example/i });
+    const postImg = screen.getByRole("img", { name: /title example/i });
     const heading = screen.getByRole("heading", { name: /title example/i });
     const p = screen.getByText(/body example/i);
 
-    expect(postCard).toHaveAttribute("src", mockPost.cover);
+    expect(postImg).toHaveAttribute("src", mockPost.cover);
     expect(heading).toBeInTheDocument();
     expect(p).toBeInTheDocument();
   });
