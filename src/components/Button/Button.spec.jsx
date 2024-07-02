@@ -14,9 +14,9 @@ describe("<Button />", () => {
   it("Shout call function onClick", () => {
     //create mock function and put it on btn
     const fn = jest.fn();
-    render(<Button text="More Posts" onClick={fn} />);
-
+    
     //Arrange: get btn in screen
+    render(<Button text="More Posts" onClick={fn} />);
     const button = screen.getByRole("button", { name: /more posts/i });
     
     //act: user action
@@ -39,5 +39,12 @@ describe("<Button />", () => {
 
     const button = screen.getByRole("button", { name: /more posts/i });
     expect(button).toBeEnabled();
+  });
+
+  it("Shout match snapshot", () => {
+    const fn = jest.fn();
+    const { container } = render(<Button text="More Posts" onClick={fn} />);
+    
+    expect(container.firstChild).toMatchSnapshot();
   });
 });
