@@ -15,5 +15,5 @@ export const PostCard = ({ post }) => {
 }
 
 PostCard.propTypes = {
-  post: PropTypes.object,
+  post: PropTypes.object.isRequired,
 }

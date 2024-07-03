@@ -2,7 +2,7 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit"
   },
-  "eslint.validate": ["javascript", "javascriptreact", "vue"],
+  "eslint.validate": ["javascript", "javascriptreact", "vue", "typescriptreact", "react"],
   "editor.formatOnSave": false,
   "[javascript]": {
     "editor.formatOnSave": true,
