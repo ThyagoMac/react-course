@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+import React from 'react';
 import "./styles.css";
 
 export const PostCard = ({ post }) => {
@@ -10,4 +12,8 @@ export const PostCard = ({ post }) => {
       </div>
     </div>
   )
+}
+
+PostCard.propTypes = {
+  post: PropTypes.object,
 }

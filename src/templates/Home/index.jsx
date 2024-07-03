@@ -1,3 +1,4 @@
+import React from 'react';
 import { useCallback, useEffect, useState } from 'react';
 
 import './styles.css'
@@ -16,7 +17,7 @@ export const Home = () => {
 
   const noMorePosts = currentPage + postsPerPage >= allPosts.length;
 
-  const filteredPosts = !!searchValue ?
+  const filteredPosts = searchValue ?
       allPosts.filter(post => {
         return post.title.toLowerCase().includes(searchValue.toLowerCase())
       })
@@ -25,7 +26,7 @@ export const Home = () => {
   const handleLoadPosts = useCallback(
     async (currentPage, postsPerPage) => {
       const finalPosts = await loadPosts();
-  
+
       setPosts(finalPosts.slice(currentPage, postsPerPage),);
       setAllPosts(finalPosts);
     },
@@ -60,7 +61,7 @@ export const Home = () => {
           handleSearch={handleSearch}
           />
       </div>
-      
+
       <h3 className="posts-count">Posts {filteredPosts.length} from {allPosts.length}</h3>
       {filteredPosts.length < 1 && (
         <div>No posts found</div>

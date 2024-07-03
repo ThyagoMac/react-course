@@ -1,3 +1,4 @@
+import React from 'react';
 import { Component } from 'react';
 
 import './styles.css'
@@ -55,7 +56,7 @@ export class Home extends Component {
 
     const noMorePosts = currentPage + postsPerPage >= allPosts.length;
 
-    const filteredPosts = !!searchValue ?
+    const filteredPosts = searchValue ?
       allPosts.filter(post => {
         return post.title.toLowerCase().includes(searchValue.toLowerCase())
       })
@@ -71,7 +72,7 @@ export class Home extends Component {
             handleSearch={this.handleSearch}
           />
         </div>
-        
+
         {filteredPosts.length < 1 && (
           <div>No posts found</div>
         )}

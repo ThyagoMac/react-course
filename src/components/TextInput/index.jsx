@@ -1,3 +1,5 @@
+import React from 'react';
+import PropTypes from "prop-types";
 import "./styles.css"
 
 export const TextInput = ({ searchValue, handleSearch, placeholder }) => {
@@ -10,4 +12,10 @@ export const TextInput = ({ searchValue, handleSearch, placeholder }) => {
       value={searchValue}
     />
   )
+}
+
+TextInput.propTypes = {
+  searchValue: PropTypes.string,
+  handleSearch: PropTypes.func,
+  placeholder: PropTypes.string,
 }
