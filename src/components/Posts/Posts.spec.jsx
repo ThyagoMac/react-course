@@ -26,7 +26,7 @@ const props = {
   ]
 }
 
-describe("<Post />", () => {
+describe("<Posts />", () => {
   it("Render posts", () => {
     render(<Posts {...props} />);
 
